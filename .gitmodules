@@ -1,0 +1,4 @@
+[submodule "docker-elk"]
+	path = docker-elk
+	url = https://github.com/deviantony/docker-elk.git
+	branch = master
