@@ -21,14 +21,14 @@ public class ObjcetLogic : MonoBehaviour{
     public void StopCollect()
     {
        this.StopAllCoroutines();
-       _dataList.Clear();
     }
     IEnumerator Logic()
     {
         Uuid = Guid.NewGuid().ToString();
+        _dataList?.Clear();
         while (true)
         {
-            _dataList.Add(new ObjectData()
+            _dataList?.Add(new ObjectData()
             {
                 ScopeId = Uuid,
                 TimeStamp = DateTime.Now,
@@ -54,8 +54,14 @@ public class ObjcetLogic : MonoBehaviour{
             request.SetHeader("Content-Type", "application/json");
         }
         request.Send();
+       // _dataList.Clear();
+    }
+
+    public void DataDispose()
+    {
         _dataList.Clear();
     }
+    
     void OnRequestFinished(HTTPRequest request, HTTPResponse response)
     {
         isFinished = true;
