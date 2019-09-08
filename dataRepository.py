@@ -38,6 +38,8 @@ class DataRepository(object):
         return ret
 
     def getLabeledData(self):
+        if es.indices.exists("labdata") == False:
+            return []
         query = {
             #limit to 10000 records
             "size":10000,
