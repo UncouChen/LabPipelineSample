@@ -1,6 +1,10 @@
 from flask import Flask,request,Response
 from dataRepository import DataRepository
 from flasgger import Swagger
+from sklearn import svm
+import numpy as np
+from sklearn import model_selection
+from sklearn.externals import joblib
 
 app = Flask(__name__)
 swagger = Swagger(app)
@@ -59,6 +63,7 @@ def startTrain():
       200:
         description: Ok
     ''' 
+
     #get labeled data
     labeled=repo.getLabeledData()
     print(labeled)
@@ -66,6 +71,17 @@ def startTrain():
     # train
     # store model  
     #TODO
+    
+
+    '''x_train, x_test, y_train, y_test =model_selection.train_test_split(x, y, random_state=1, train_size=0.6)
+    clf = svm.SVC(C=0.1, kernel='linear', decision_function_shape='ovr')
+    #clf = svm.SVC(C=0.8, kernel='rbf', gamma=20, decision_function_shape='ovr')
+    clf.fit(x_train, y_train.ravel())
+    print(clf.score(x_train, y_train)) # 精度
+    y_hat = clf.predict(x_test)
+    print(clf.score(x_test, y_test))
+    #joblib.dump(clf,'clf.pkl')
+    model=clf'''
     model={}
     repo.setLatestModel(model)
     return 'Hello World!'
@@ -93,8 +109,9 @@ def predictResult(scopeId):
     print(data)
     # predict 
     #TODO
+    
     return 'Hello World!'+scopeId
 
 
 if __name__ == '__main__':
-    app.run(debug=True )
+    app.run( host='0.0.0.0', port= 6000, debug=True )
