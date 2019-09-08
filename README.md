@@ -26,7 +26,7 @@ git submodule update --init --recursive
 - 搭建后端服务
   - 安装依赖项 ```pip install -r requirements.txt```
   - 运行后端服务 ```python index.py```
-  - 进入 http://127.0.0.1:5000/apidocs 查看文档
+  - 进入 http://127.0.0.1:6000/apidocs 查看文档
 
 - 打开Unity程序
   - 标记数据
