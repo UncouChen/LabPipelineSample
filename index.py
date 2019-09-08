@@ -5,6 +5,7 @@ from sklearn import svm
 import numpy as np
 from sklearn import model_selection
 from sklearn.externals import joblib
+import json
 
 app = Flask(__name__)
 swagger = Swagger(app)
@@ -53,7 +54,7 @@ def uploadData():
         description: Ok
     '''   
     repo.storeData(request.json)
-    return Response("{}", status=201, mimetype='application/json')
+    return Response("{}", status=200, mimetype='application/json')
 
 @app.route('/startTrain',methods=['GET'])
 def startTrain():
@@ -66,6 +67,9 @@ def startTrain():
 
     #get labeled data
     labeled=repo.getLabeledData()
+    if len(labeled)==0:
+      message={"message":"empty data"}
+      return Response(json.dumps(message), status=400, mimetype='application/json')
     print(labeled)
     # group by scope Id order by timeStamp
     # train
