@@ -30,10 +30,10 @@ public class ObjcetLogic : MonoBehaviour{
         {
             _dataList?.Add(new ObjectData()
             {
-                ScopeId = Uuid,
-                TimeStamp = DateTime.Now,
-                X=this.gameObject.transform.position.x,
-                Y=this.gameObject.transform.position.y
+                scopeId = Uuid,
+                timeStamp = DateTime.Now,
+                x= this.gameObject.transform.position.x,
+                y=this.gameObject.transform.position.y
             });
             yield return null;
         }
@@ -42,7 +42,7 @@ public class ObjcetLogic : MonoBehaviour{
     public void SendDataToServer(MotionType type)
     {
         isFinished = false;
-        _dataList.ForEach(p=>p.Type=type.ToString());
+        _dataList.ForEach(p=>p.type=type.ToString());
         var o = JsonConvert.SerializeObject(_dataList);
        // Debug.Log(o);
         var request = new HTTPRequest(new Uri(SystemLogic.Instance.Config.ServerPath+"uploadData"), HTTPMethods.Post, OnRequestFinished)

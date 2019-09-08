@@ -771,7 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24410e4aea0eece4db40e8a4abddf3a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsConnectToServer: 0
+  IsConnectToServer: 1
   MarkBtn: {fileID: 2115381428}
   ReBuildBtn: {fileID: 989589334}
   TestBtn: {fileID: 665651380}

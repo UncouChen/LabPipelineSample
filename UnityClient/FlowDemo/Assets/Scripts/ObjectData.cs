@@ -6,12 +6,12 @@ using System;
 [Serializable]
 public class ObjectData
 {
-    public string Type { get; set; }
-    public double X{ get; set; }
-    public double Y { get; set; }
-    public DateTime TimeStamp { get; set; }
+    public string type { get; set; }
+    public double x{ get; set; }
+    public double y { get; set; }
+    public DateTime timeStamp { get; set; }
 
-    public string ScopeId { get; set; }
+    public string scopeId { get; set; }
 
 }
 

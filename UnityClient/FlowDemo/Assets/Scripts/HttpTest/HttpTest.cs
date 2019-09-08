@@ -33,11 +33,11 @@ public class HttpTest : MonoBehaviour
         {
             objectDatas.Add(new ObjectData()
             {
-                ScopeId = "test01",
-                TimeStamp = DateTime.Now,
-                Type = "Test",
-                X = Random.Range(-1, 2),
-                Y = Random.Range(-1, 2),
+                scopeId = "test01",
+                timeStamp = DateTime.Now,
+                type = "Test",
+                x = Random.Range(-1, 2),
+                y = Random.Range(-1, 2),
             });
         }
 

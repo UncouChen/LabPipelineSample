@@ -135,7 +135,7 @@ public class SystemLogic : MonoSingleton<SystemLogic>
     {
         float time = 0;
         Type = type;
-        Debug.Log(StartPos);
+       // Debug.Log(StartPos);
         _currentObject.transform.position = StartPos;
         switch (type)
         {
