@@ -20,13 +20,11 @@ class DataRepository(object):
     def getData(self, scopeId):
         # get data in scope
         query = {
+            "size":10000,
             "query": {
                 "bool": {
-                    "must": [{
-                        "term": {
-                            "scopeId": scopeId
-                        }
-                    }
+                    "must": [
+                        {"term": {"scopeId": scopeId}}
                     ]
                 }
             }
@@ -64,4 +62,4 @@ class DataRepository(object):
         return es.get(index="labdata-model", id='latest')['_source']
 
     def setLatestModel(self, model):
-        es.index(index="labdata-model", id='latest', body=model)
+        es.index(index="labdata-model", id='latest', body = model)

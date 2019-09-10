@@ -253,10 +253,12 @@ public class SystemLogic : MonoSingleton<SystemLogic>
                 yield return new WaitUntil(() =>
                 {
                     ResultText.text = "等待结果中。。。。。。。";
-                    return _currentObject.GetComponent<ObjcetLogic>().isFinished;
+                    return _currentObject.GetComponent<ObjcetLogic>().isFinished==true;
                 });
-                yield return new HTTPRequest(new Uri(Config.ServerPath + "predictResult/{" + _currentObject.GetComponent<ObjcetLogic>().Uuid + "}"), (request, response) =>
+                yield return new WaitForSeconds(5f);
+                yield return new HTTPRequest(new Uri(Config.ServerPath + "predictResult/" + _currentObject.GetComponent<ObjcetLogic>().Uuid ), (request, response) =>
                 {
+                    Debug.Log(Config.ServerPath + "predictResult/" + _currentObject.GetComponent<ObjcetLogic>().Uuid);
                     ResultText.text = response.DataAsText;
                     Debug.Log(response.DataAsText);
                 }).Send();
