@@ -24,7 +24,7 @@ public class ObjcetLogic : MonoBehaviour{
     }
     IEnumerator Logic()
     {
-        Uuid = Guid.NewGuid().ToString();
+        Uuid =  Guid.NewGuid().ToString().Replace("-",string.Empty);
         _dataList?.Clear();
         while (true)
         {
@@ -64,8 +64,9 @@ public class ObjcetLogic : MonoBehaviour{
     
     void OnRequestFinished(HTTPRequest request, HTTPResponse response)
     {
-        isFinished = true;
+       
         Debug.Log(response.DataAsText);
+        isFinished = true;
     }
 
 }
